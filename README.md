@@ -31,6 +31,7 @@ terraform init
 terraform plan 
 terraform apply
 
+
 ## Destroy POC/Demo
 terraform destroy 
 
