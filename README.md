@@ -23,6 +23,21 @@ Input variables let you customize aspects of Terraform modules without altering 
 ### Authentication to Cloud 
 There are various methods for cloud authentication and based on the setup it would need to be configured in Terraform. 
 
+# Setup 
+## Start POC/Demo
+git clone 
+cd 
+terraform init
+terraform plan 
+terraform apply
+
+## Destroy POC/Demo
+terraform destroy 
+
+
+
+
+
 # License
 THIS SCRIPT IS PROVIDED TO YOU "AS IS." TO THE EXTENT PERMITTED BY LAW, QUALYS HEREBY DISCLAIMS ALL WARRANTIES AND LIABILITY FOR THE PROVISION OR USE OF THIS SCRIPT. IN NO EVENT SHALL THESE SCRIPTS BE DEEMED TO BE CLOUD SERVICES AS PROVIDED BY QUALYS
 
