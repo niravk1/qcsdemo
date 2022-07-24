@@ -5,11 +5,12 @@ NOTE : This demo is tested on macOS (Apple M1 Pro chip) and Linux.
 
 # Prerequisite
 Below tools are required to setup and configure Qualys Container Security, Proof of concept/value (POC/POV) & Demonstration (demo).
+
 | Azure Cloud Account                | Azure DevOps Account               |
-| ---------------------------------- | ---------------------------------- |
 | Azure Command-Line Interface (CLI) | terraform                          |
-| ---------------------------------- | ---------------------------------- |
 | docker                             | git                                |
+| ---------------------------------- | ---------------------------------- |
+| ---------------------------------- | ---------------------------------- |
 
 
 
