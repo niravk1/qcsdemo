@@ -1,6 +1,8 @@
 # Qualys Container Security Demo
 Qualys Container Security Demo on Azure Cloud. 
 
+![tf-qcs-aks-acr-azdo](https://user-images.githubusercontent.com/12005983/180643185-6ab85d6a-def0-40a2-9a2c-4e6700c12343.svg)
+
 NOTE : This demo is tested on macOS (Apple M1 Pro chip) and Linux. 
 
 # Prerequisite
