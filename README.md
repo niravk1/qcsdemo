@@ -5,21 +5,17 @@ NOTE : This demo is tested on macOS (Apple M1 Pro chip) and Linux.
 
 # Prerequisite
 Below tools are required to setup and configure Qualys Container Security, Proof of concept/value (POC/POV) & Demonstration (demo).
-
-| Azure Cloud Account                | Azure DevOps Account               |
+| Azure Cloud Account      | Azure DevOps Account          | 
+| ------------- |:-------------:|
 | Azure Command-Line Interface (CLI) | terraform                          |
-| docker                             | git                                |
-| ---------------------------------- | ---------------------------------- |
-| ---------------------------------- | ---------------------------------- |
-
-
+|           docker                   | git                                |
 
 # Terraform 
 Terraform module is not used for this POC/Demo setup for simplicity and easy understanding. 
   Terraform module is a container for multiple resources that are used together. Modules can be used to create lightweight abstractions, so that you can describe your infrastructure in terms of its architecture, rather than directly in terms of physical objects.
 
 ## Update 
-###### terraform.tfvars
+### terraform.tfvars
 Input variables let you customize aspects of Terraform modules without altering the module's own source code. This allows you to share modules across different Terraform configurations, making your module composable and reusable.
 
 
