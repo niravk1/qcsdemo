@@ -17,4 +17,5 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 # Add PATH
 printf "\nexport PATH=\$PATH:$MY_HOME/.local/bin\n" >> $MY_HOME/.bashrc
 
+docker pull qualys/qcs-sensor:latest
 exit 0
