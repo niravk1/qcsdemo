@@ -12,6 +12,16 @@ Below tools are required to setup and configure Qualys Container Security, Proof
 | Azure Command-Line Interface (CLI) | terraform                          |
 |           docker                   | git                                |
 
+# Accronym
+tfqcs : Terraform Qualys Container Sensor \
+qcs : Qualys Container Sensor \
+rg : resource group \
+aks : Azure Kubernetes Service \ 
+acr : Azure Container Registry
+azdo : Azure DevOps
+
+
+
 # Terraform 
 Terraform module is not used for this POC/Demo setup for simplicity and easy understanding. 
   Terraform module is a container for multiple resources that are used together. Modules can be used to create lightweight abstractions, so that you can describe your infrastructure in terms of its architecture, rather than directly in terms of physical objects.
@@ -25,10 +35,10 @@ There are various methods for cloud authentication and based on the setup it wou
 
 # Setup 
 ## Start POC/Demo
-git clone 
-cd 
-terraform init
-terraform plan 
+git clone \
+cd \
+terraform init \
+terraform plan \
 terraform apply
 
 
