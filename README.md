@@ -3,7 +3,7 @@ Qualys Container Security Demo on Azure Cloud.
 
 ![tf-qcs-aks-acr-azdo](https://user-images.githubusercontent.com/12005983/180643185-6ab85d6a-def0-40a2-9a2c-4e6700c12343.svg)
 
-NOTE : This demo is tested on macOS (Apple M1 Pro chip) and Linux. 
+NOTE : This demo is tested on macOS (Apple M1 Pro chip).
 
 # Prerequisite
 Below tools are required to setup and configure Qualys Container Security, Proof of concept/value (POC/POV) & Demonstration (demo).
@@ -11,8 +11,9 @@ Below tools are required to setup and configure Qualys Container Security, Proof
 | ------------- |:-------------:|
 | Azure Command-Line Interface (CLI) | terraform                          |
 |           docker                   | git                                |
+|           kubectl                  | 
 
-# Accronym
+# Acronyms
 tfqcs : Terraform Qualys Container Sensor \
 qcs : Qualys Container Sensor \
 rg : resource group \
@@ -23,30 +24,42 @@ azdo : Azure DevOps
 
 
 # Terraform 
-Terraform module is not used for this POC/Demo setup for simplicity and easy understanding. 
-  Terraform module is a container for multiple resources that are used together. Modules can be used to create lightweight abstractions, so that you can describe your infrastructure in terms of its architecture, rather than directly in terms of physical objects.
-
-## Configure
-### terraform.tfvars
-Input variables let you customize aspects of Terraform modules without altering the module's own source code. This allows you to share modules across different Terraform configurations, making your module composable and reusable.
+- Terraform modules are not used for this POC/Demo setup for simplicity and easy understanding. 
 
 ### Authentication to Cloud 
 There are various methods for cloud authentication and based on the setup it would need to be configured in Terraform. 
 
 # Setup 
-## Start POC/Demo
-git clone \
-cd \
-terraform init \
-terraform plan \
-terraform apply
 
+## Configure
+### terraform.tfvars : Input variables let you customize aspects of Terraform modules without altering the module's own source code. This allows you to share modules across different Terraform configurations, making your module composable and reusable.
+
+### Default method used for Azure authentication is Single Sign-On. If you need to use another method, you will need to updated few code/configuration in Terraform.  
+
+## Start POC/Demo
+git clone https://github.com/niravk1/qualys_cs_poc_demo.git \
+cd qualys_cs_poc_demo/azure/cs_aks_acr_azdo 
+
+- Update terraform.tfvars (Imp : Azure DevOps Org Url , Personal Access Token, Qualys Activation/Customer ID and POD URL)
+
+./env_prep.sh \
+terraform init \
+terraform validate \
+terraform plan \
+terraform apply \
+./demo_prep.sh 
 
 ## Destroy POC/Demo
-terraform destroy 
+terraform destroy \
+- Manual clean-up of Qualys Cloud Platform entries
+- Manual clean-up of ~/.kube/config file (if required)
 
-
-
+# Future Enhancements: Work In Progress updates
+1. Create Terraform modules for Azure POC/Demo
+2. Install Qualys Cloud Agent
+2. Qualys Container Sensor POC, Demo on AWS Cloud
+3. Qualys Patch Management Demo 
+4. Azure DevOps (AZDO) build pipeline updates 
 
 
 # License
