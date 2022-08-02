@@ -61,7 +61,7 @@ terraform destroy \
 4. Qualys Patch Management Demo 
 5. Azure DevOps (AZDO) build pipeline updates 
 6. IaC Scanning and QFlow automation
-
+7. Test this POC-Demo on Linux and Windows workstation 
 
 # License
 THIS SCRIPT IS PROVIDED TO YOU "AS IS." TO THE EXTENT PERMITTED BY LAW, QUALYS HEREBY DISCLAIMS ALL WARRANTIES AND LIABILITY FOR THE PROVISION OR USE OF THIS SCRIPT. IN NO EVENT SHALL THESE SCRIPTS BE DEEMED TO BE CLOUD SERVICES AS PROVIDED BY QUALYS
