@@ -22,19 +22,17 @@ acr : Azure Container Registry
 azdo : Azure DevOps
 
 
-
-# Terraform 
+# Important Information
 - Terraform modules are not used for this POC/Demo setup for simplicity and easy understanding. 
-
-### Authentication to Cloud 
-There are various methods for cloud authentication and based on the setup it would need to be configured in Terraform. 
+- Make sure either you stop the resources or delete the environment "terraform destroy", to avoid cloud charges. 
+- By default UbuntuServer 18.04-LTS is used for Registry mode Container Sensor VM
 
 # Setup 
 
 ## Configure
 ### terraform.tfvars : Input variables let you customize aspects of Terraform modules without altering the module's own source code. This allows you to share modules across different Terraform configurations, making your module composable and reusable.
 
-### Default method used for Azure authentication is Single Sign-On. If you need to use another method, you will need to updated few code/configuration in Terraform.  
+### Authentication to Cloud : Default method used for Azure authentication is Single Sign-On. If you need to use another method, you will need to updated few code/configuration in Terraform.  
 
 ## Start POC/Demo
 git clone https://github.com/niravk1/qualys_cs_poc_demo.git \
