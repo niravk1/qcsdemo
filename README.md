@@ -57,9 +57,10 @@ terraform destroy \
 # Future Enhancements: Work In Progress updates
 1. Create Terraform modules for Azure POC/Demo
 2. Install Qualys Cloud Agent
-2. Qualys Container Sensor POC, Demo on AWS Cloud
-3. Qualys Patch Management Demo 
-4. Azure DevOps (AZDO) build pipeline updates 
+3. Qualys Container Sensor POC, Demo on AWS Cloud
+4. Qualys Patch Management Demo 
+5. Azure DevOps (AZDO) build pipeline updates 
+6. IaC Scanning and QFlow automation
 
 
 # License
