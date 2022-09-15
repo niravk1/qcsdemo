@@ -5,7 +5,7 @@ winrm set winrm/config/service '@{AllowUnencrypted="true"}'
 winrm set winrm/config/service/auth '@{Basic="true"}'
 $sharepath = "C:\Users\azureuser\AppData\Local\Temp"
 $Acl = Get-ACL $SharePath
-$ccessRule= New-Object System.Security.AccessControl.FileSystemAccessRule("everyone","FullControl","ContainerInherit,Objectinherit","none","Allow")
+$AccessRule= New-Object System.Security.AccessControl.FileSystemAccessRule("everyone","FullControl","ContainerInherit,Objectinherit","none","Allow")
 $Acl.AddAccessRule($AccessRule)
 Set-Acl $SharePath $Acl
 $Installer = $env:TEMP + "\chrome_installer.exe"; 
