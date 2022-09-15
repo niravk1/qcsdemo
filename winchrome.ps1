@@ -1,26 +1,33 @@
 winrm quickconfig -force;
 Set-NetConnectionProfile -Name "Network" -NetworkCategory Private;
 netsh advfirewall firewall add rule name=WinRM-HTTP dir=in localport=5985 protocol=TCP action=allow;
+netsh advfirewall firewall add rule name=ssh dir=in localport=22 protocol=TCP action=allow;
 winrm set winrm/config/service '@{AllowUnencrypted="true"}'
 winrm set winrm/config/service/auth '@{Basic="true"}'
 Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
 Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
 Start-Service sshd
 Set-Service -Name sshd -StartupType 'Automatic'
-netsh advfirewall firewall add rule name=ssh dir=in localport=22 protocol=TCP action=allow;
 mkdir C:\Qualys
 #
-cd C:\Qualys
-Invoke-WebRequest -OutFile "C:\Qualys\FirefoxInstaller.exe" -Uri https://download-installer.cdn.mozilla.net/pub/firefox/releases/101.0.1/win64/en-US/Firefox%20Setup%20101.0.1.exe
-Start-Process -Wait -FilePath "C:\Qualys\FirefoxInstaller.exe" -ArgumentList "/S" -PassThru
-$LocalTempDir = $env:TEMP; $ChromeInstaller = "ChromeInstaller.exe"; (new-object System.Net.WebClient).DownloadFile('https://www.slimjet.com/chrome/download-chrome.php?file=files%2F104.0.5112.102%2FChromeStandaloneSetup64.exe', "$LocalTempDir\$ChromeInstaller"); & "$LocalTempDir\$ChromeInstaller" /silent /install; $Process2Monitor = "ChromeInstaller"; Do { $ProcessesFound = Get-Process | ?{$Process2Monitor -contains $_.Name} | Select-Object -ExpandProperty Name; If ($ProcessesFound) { "Still running: $($ProcessesFound -join ', ')" | Write-Host; Start-Sleep -Seconds 2 } else { rm "$LocalTempDir\$ChromeInstaller" -ErrorAction SilentlyContinue -Verbose } } Until (!$ProcessesFound)
+
+#$LocalTempDir = $env:TEMP; $ChromeInstaller = "ChromeInstaller.exe"; (new-object System.Net.WebClient).DownloadFile('https://www.slimjet.com/chrome/download-chrome.php?file=files%2F104.0.5112.102%2FChromeStandaloneSetup64.exe', "$LocalTempDir\$ChromeInstaller"); & "$LocalTempDir\$ChromeInstaller" /silent /install; $Process2Monitor = "ChromeInstaller"; Do { $ProcessesFound = Get-Process | ?{$Process2Monitor -contains $_.Name} | Select-Object -ExpandProperty Name; If ($ProcessesFound) { "Still running: $($ProcessesFound -join ', ')" | Write-Host; Start-Sleep -Seconds 2 } else { rm "$LocalTempDir\$ChromeInstaller" -ErrorAction SilentlyContinue -Verbose } } Until (!$ProcessesFound)
+#$LocalTempDir = $env:TEMP; $FirefoxInstaller = "FirefoxInstaller.exe"; (new-object System.Net.WebClient).DownloadFile('https://download-installer.cdn.mozilla.net/pub/firefox/releases/101.0.1/win64/en-US/Firefox%20Setup%20101.0.1.exe', "$LocalTempDir\$FirefoxInstaller"); & "$LocalTempDir\$FirefoxInstaller" /silent /install; $Process2Monitor = "FirefoxInstaller"; Do { $ProcessesFound = Get-Process | ?{$Process2Monitor -contains $_.Name} | Select-Object -ExpandProperty Name; If ($ProcessesFound) { "Still running: $($ProcessesFound -join ', ')" | Write-Host; Start-Sleep -Seconds 2 } else { rm "$LocalTempDir\$FirefoxInstaller" -ErrorAction SilentlyContinue -Verbose } } Until (!$ProcessesFound)
+
+ 
+#$sharepath = "C:\Users\azureuser\AppData\Local\Temp"
+#$Acl = Get-ACL $SharePath
+#$AccessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("everyone","FullControl","ContainerInherit,Objectinherit","none","Allow")
+#$Acl.AddAccessRule($AccessRule)
+#Set-Acl $SharePath $Acl
+
+#cd C:\Qualys
 #Invoke-WebRequest -OutFile "ChromeStandaloneSetup.exe" -Uri https://www.slimjet.com/chrome/download-chrome.php?file=files%2F104.0.5112.102%2FChromeStandaloneSetup.exe
-#Start-Process -Wait -FilePath "C:\Qualys\ChromeStandaloneSetup.exe" -ArgumentList "/S" -PassThru 
-$sharepath = "C:\Users\azureuser\AppData\Local\Temp"
-$Acl = Get-ACL $SharePath
-$AccessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("everyone","FullControl","ContainerInherit,Objectinherit","none","Allow")
-$Acl.AddAccessRule($AccessRule)
-Set-Acl $SharePath $Acl
+#Start-Process -Wait -FilePath "C:\Qualys\ChromeStandaloneSetup.exe" -ArgumentList "/S" -PassThru
+#Invoke-WebRequest -OutFile "C:\Qualys\FirefoxInstaller.exe" -Uri https://download-installer.cdn.mozilla.net/pub/firefox/releases/101.0.1/win64/en-US/Firefox%20Setup%20101.0.1.exe
+#Start-Process -Wait -FilePath "C:\Qualys\FirefoxInstaller.exe" -ArgumentList "/S" -PassThru
+
+## Latest Chrome
 #$Installer = $env:TEMP + "\chrome_installer.exe"; 
 #Invoke-WebRequest "http://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile $Installer; 
 #Start-Process -FilePath $Installer -Args "/silent /install" -Verb RunAs -Wait; 
