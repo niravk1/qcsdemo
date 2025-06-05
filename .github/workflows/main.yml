@@ -19,8 +19,3 @@ jobs:
                 PASS: ${{ secrets.PASSWORD }}
             with:
               directory: '.'
-          - name: Upload SARIF file
-            uses: github/codeql-action/upload-sarif@v2
-            if: always()
-            with:
-                sarif_file: response.sarif
