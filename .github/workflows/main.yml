@@ -1,13 +1,5 @@
 name: Qualys IAC Scan 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main 
-  schedule:
-    - cron:  '0 0 * * *'
+on: workflow_dispatch
 jobs:
     Qualys_iac_scan:
         runs-on: ubuntu-latest
