@@ -1,15 +1,23 @@
-name: Qualys IAC Scan
-on: workflow_dispatch
+name: Qualys IAC Scan 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main 
+  schedule:
+    - cron:  '0 0 * * *'
 jobs:
     Qualys_iac_scan:
         runs-on: ubuntu-latest
         name: Qualys IaC Scan
         steps:
           - name: Checkout
-            uses: actions/checkout@v2
+            uses: actions/checkout@v2 
             with:
                 fetch-depth: 0
-
+    
           - name: Qualys IAC scan action step
             uses: Qualys/github_action_qiac@main
             id: qiac
@@ -19,3 +27,9 @@ jobs:
                 PASS: ${{ secrets.PASSWORD }}
             with:
               directory: '.'
+          
+          - name: Upload SARIF file
+            uses: github/codeql-action/upload-sarif@v1
+            if: always() 
+            with:
+                 sarif_file: response.sarif
